@@ -211,7 +211,7 @@ body {
   font-size: 16px;
 }
 
-input:focus {
+input:focus, textarea:focus {
     outline: none;
   }
 `

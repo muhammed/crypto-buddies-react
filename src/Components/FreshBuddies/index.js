@@ -3,6 +3,7 @@ import { useQuery, gql } from '@apollo/client'
 import { Container } from '@/Theme/GlobalStyles/Container'
 import { List, Title, Wrapper } from './styles'
 import BuddyCard from '@/Components/BuddyCard'
+import BuddiesList from '@/Components/BuddiesList'
 
 const freshBuddiesQuery = gql`
   query GetFreshBuddies($limit: Int!) {
@@ -24,11 +25,7 @@ const FreshBuddies = () => {
     <Container>
       <Wrapper>
         <Title>Fresh cryptobuddies</Title>
-        <List>
-          {data?.buddies?.map((buddy) => (
-            <BuddyCard buddy={buddy} key={buddy.id} />
-          ))}
-        </List>
+        <BuddiesList list={data?.buddies} />
         {error && error}
       </Wrapper>
     </Container>
