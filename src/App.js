@@ -19,6 +19,7 @@ import Navigation from '@/Components/Navigation'
 
 import { ApolloProvider } from '@apollo/client/react'
 import { ApolloClient, InMemoryCache } from '@apollo/client'
+import Footer from '@/Components/Footer'
 
 const client = new ApolloClient({
   uri: 'https://eu1.prisma.sh/nevena-djaja/mocks/dev',
@@ -50,6 +51,7 @@ const App = () => {
                       </Route>
                     </Switch>
                   </div>
+                  <Footer />
                 </div>
               </BrowserRouter>
             </ToastrProvider>
