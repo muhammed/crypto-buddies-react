@@ -1,25 +1,47 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react'
+import { BrowserRouter, Switch, Route, NavLink } from 'react-router-dom'
 
-function App() {
+import { ThemeProvider } from 'styled-components'
+
+import { GlobalProvider } from '@/Context/GlobalProvider'
+import { ToastrProvider } from '@/Context/ToastrProvider'
+
+import { defaultTheme } from '@/Theme/theme'
+import GlobalStyle from '@/Theme/GlobalStyles/GlobalStyles'
+import '@/Assets/scss/main.scss'
+
+import ToastrList from '@/Components/ToastrList'
+import Home from '@/Pages/Home'
+import Page404 from '@/Pages/404'
+import { HOME_PATH } from '@/Constants/routeNames'
+
+const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    <>
+      <ThemeProvider theme={defaultTheme}>
+        <GlobalProvider>
+          <ToastrProvider>
+            <ToastrList />
+            <GlobalStyle />
+            <BrowserRouter>
+              <div className="page">
+                <div className="page-content">
+                  <Switch>
+                    <Route exact path={HOME_PATH}>
+                      <Home />
+                    </Route>
+                    <Route>
+                      <Page404 />
+                    </Route>
+                  </Switch>
+                </div>
+              </div>
+            </BrowserRouter>
+          </ToastrProvider>
+        </GlobalProvider>
+      </ThemeProvider>
+    </>
+  )
 }
 
-export default App;
+export default App
