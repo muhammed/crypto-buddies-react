@@ -16,32 +16,42 @@ import Page404 from '@/Pages/404'
 import { HOME_PATH } from '@/Constants/routeNames'
 import Navigation from '@/Components/Navigation'
 
+import { ApolloProvider } from '@apollo/client/react'
+import { ApolloClient, InMemoryCache } from '@apollo/client'
+
+const client = new ApolloClient({
+  uri: 'https://eu1.prisma.sh/nevena-djaja/mocks/dev',
+  cache: new InMemoryCache()
+})
+
 const App = () => {
   return (
     <>
-      <ThemeProvider theme={defaultTheme}>
-        <GlobalProvider>
-          <ToastrProvider>
-            <ToastrList />
-            <GlobalStyle />
-            <BrowserRouter>
-              <div className="page">
-                <Navigation />
-                <div className="page-content">
-                  <Switch>
-                    <Route exact path={HOME_PATH}>
-                      <Home />
-                    </Route>
-                    <Route>
-                      <Page404 />
-                    </Route>
-                  </Switch>
+      <ApolloProvider client={client}>
+        <ThemeProvider theme={defaultTheme}>
+          <GlobalProvider>
+            <ToastrProvider>
+              <ToastrList />
+              <GlobalStyle />
+              <BrowserRouter>
+                <div className="page">
+                  <Navigation />
+                  <div className="page-content">
+                    <Switch>
+                      <Route exact path={HOME_PATH}>
+                        <Home />
+                      </Route>
+                      <Route>
+                        <Page404 />
+                      </Route>
+                    </Switch>
+                  </div>
                 </div>
-              </div>
-            </BrowserRouter>
-          </ToastrProvider>
-        </GlobalProvider>
-      </ThemeProvider>
+              </BrowserRouter>
+            </ToastrProvider>
+          </GlobalProvider>
+        </ThemeProvider>
+      </ApolloProvider>
     </>
   )
 }

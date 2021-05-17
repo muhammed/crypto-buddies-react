@@ -1,7 +1,13 @@
 import React from 'react'
+import { Container } from '@/Theme/GlobalStyles/Container'
+import Search from '@/Components/Search'
 
 const Home = () => {
-  return <div>home page</div>
+  return (
+    <Container>
+      <Search />
+    </Container>
+  )
 }
 
 export default Home
