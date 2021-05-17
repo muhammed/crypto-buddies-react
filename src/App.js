@@ -14,6 +14,7 @@ import ToastrList from '@/Components/ToastrList'
 import Home from '@/Pages/Home'
 import Page404 from '@/Pages/404'
 import { HOME_PATH } from '@/Constants/routeNames'
+import Navigation from '@/Components/Navigation'
 
 const App = () => {
   return (
@@ -25,6 +26,7 @@ const App = () => {
             <GlobalStyle />
             <BrowserRouter>
               <div className="page">
+                <Navigation />
                 <div className="page-content">
                   <Switch>
                     <Route exact path={HOME_PATH}>

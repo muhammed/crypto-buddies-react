@@ -206,8 +206,9 @@ template {
 }
 
 body {
-  background: #F4F7FC;
-  font-family: sans-serif;
+  background: #fff;
+  font-family: 'Space Mono', monospace;
+  font-size: 16px;
 }
 
 input:focus {
