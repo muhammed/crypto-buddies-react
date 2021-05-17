@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Wrapper } from './styles'
+import { CloseButton, Wrapper } from './styles'
 import { useQuery, useLazyQuery, gql } from '@apollo/client'
 import { Container } from '@/Theme/GlobalStyles/Container'
 import { Icon, InputWrapper, Input, List, Content } from './styles'
@@ -30,6 +30,15 @@ const Search = () => {
     })
   }
 
+  const handleClose = () => {
+    setFocused(false)
+    setName('')
+
+    getSearch({
+      variables: { name: undefined }
+    })
+  }
+
   return (
     <Wrapper active={focused}>
       <Content as={Container}>
@@ -38,11 +47,17 @@ const Search = () => {
           <Input
             placeholder="Crypto buddies"
             type="search"
+            value={name}
             active={name?.length > 0}
             onChange={(event) => handleSearch(event.target.value)}
             onFocus={() => setFocused(true)}
             onBlur={() => setFocused(false)}
           />
+          {name?.length > 0 && (
+            <CloseButton onClick={handleClose}>
+              <img src="/images/icons-close.svg" />
+            </CloseButton>
+          )}
         </InputWrapper>
         <List>
           {name?.length > 0 && (
