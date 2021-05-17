@@ -26,7 +26,6 @@ const Details = (props) => {
       setDetails(state.initialItem)
       return
     }
-    console.log({ id })
     getDetailsFromAPI({
       variables: { id: id }
     })
