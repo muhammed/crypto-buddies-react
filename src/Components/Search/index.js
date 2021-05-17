@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { CloseButton, Wrapper } from './styles'
-import { useQuery, useLazyQuery, gql } from '@apollo/client'
+import { useLazyQuery, gql } from '@apollo/client'
 import { Container } from '@/Theme/GlobalStyles/Container'
 import { Icon, InputWrapper, Input, List, Content } from './styles'
 import BuddiesList from '@/Components/BuddiesList'

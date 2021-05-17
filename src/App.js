@@ -12,8 +12,9 @@ import '@/Assets/scss/main.scss'
 
 import ToastrList from '@/Components/ToastrList'
 import Home from '@/Pages/Home'
+import Details from '@/Pages/Details'
 import Page404 from '@/Pages/404'
-import { HOME_PATH } from '@/Constants/routeNames'
+import { DETAILS_PATH, HOME_PATH } from '@/Constants/routeNames'
 import Navigation from '@/Components/Navigation'
 
 import { ApolloProvider } from '@apollo/client/react'
@@ -40,6 +41,9 @@ const App = () => {
                     <Switch>
                       <Route exact path={HOME_PATH}>
                         <Home />
+                      </Route>
+                      <Route path={`${DETAILS_PATH}/:id`}>
+                        <Details />
                       </Route>
                       <Route>
                         <Page404 />

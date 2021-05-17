@@ -1,6 +1,5 @@
 import React from 'react'
 import { Avatar, Card, Name } from './styles'
-import Link from '@/Components/Link'
 
 const BuddyCard = ({ buddy, index, showAnimation }) => {
   return (
