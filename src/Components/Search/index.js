@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
-import { Container } from './styles'
-import { useQuery, gql } from '@apollo/client'
+import { Wrapper } from './styles'
+import { useQuery, useLazyQuery, gql } from '@apollo/client'
+import { Container } from '@/Theme/GlobalStyles/Container'
 
 const searchQuery = gql`
   query GetBuddies($name: String!) {
@@ -14,13 +15,30 @@ const searchQuery = gql`
 
 const Search = () => {
   const [name, setName] = useState('')
-  const { data, loading, error } = useQuery(searchQuery, {
-    variables: { name }
-  })
+  const [getSearch, { data, loading, error }] = useLazyQuery(searchQuery)
+
+  const handleSearch = (value) => {
+    console.log({ value })
+    if (!value || value === '') {
+      return
+    }
+    console.log(222, { value })
+    setName(value)
+    getSearch({
+      variables: { name: value }
+    })
+  }
+
   return (
-    <Container>
-      <input type="search" onChange={(event) => setName(event.target.value)} />
-    </Container>
+    <Wrapper>
+      <Container>
+        <input
+          type="search"
+          onChange={(event) => handleSearch(event.target.value)}
+        />
+        <button onClick={() => handleSearch(name)}>get search</button>
+      </Container>
+    </Wrapper>
   )
 }
 

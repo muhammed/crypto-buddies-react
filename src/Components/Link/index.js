@@ -3,7 +3,7 @@ import { NavLink } from 'react-router-dom'
 
 const Link = (props) => {
   const { to, params } = props
-  const [url, setUrl] = useState(to)
+  const [url, setUrl] = useState(to || '')
 
   useEffect(() => {
     if (params) {

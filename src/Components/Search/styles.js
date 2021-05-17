@@ -1,8 +1,7 @@
 import styled from 'styled-components'
 
-export const Container = styled.div`
-  padding: 28px 76px;
+export const Wrapper = styled.div`
+  min-height: 80vh;
   display: flex;
   align-items: center;
-  justify-content: space-between;
 `
